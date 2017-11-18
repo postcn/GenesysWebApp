@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import {routerReducer, routerMiddleware} from 'react-router-redux';
+import {routerMiddleware} from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import Routes from './routes';
@@ -23,10 +23,8 @@ const middleware = routerMiddleware(history);
 const persistedState = loadState();
 
 const store = createStore(
-  combineReducers({
-    ...reducers,
-    router: routerReducer
-  }),
+  reducers,
+  persistedState,
   composeWithDevTools(
     applyMiddleware(middleware)
   )
