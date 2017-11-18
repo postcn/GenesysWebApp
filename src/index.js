@@ -12,6 +12,9 @@ import reducers from './reducers';
 
 import './index.css';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 const history = createHistory();
 
 const middleware = routerMiddleware(history);
