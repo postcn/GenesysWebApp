@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import Routes from './routes';
 import reducers from './reducers';
+import { loadState, saveState } from './localStorage';
 
 import './index.css';
 
@@ -19,6 +20,8 @@ const history = createHistory();
 
 const middleware = routerMiddleware(history);
 
+const persistedState = loadState();
+
 const store = createStore(
   combineReducers({
     ...reducers,
@@ -28,6 +31,10 @@ const store = createStore(
     applyMiddleware(middleware)
   )
 );
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>
