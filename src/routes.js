@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import App from './components/App';
 import About from './components/About';
+import Admin from './components/Admin';
 import NotFound from './components/NotFound';
 import NavBar from './components/NavBar';
 
@@ -12,6 +13,7 @@ const Routes = (props) => (
     <NavBar/>
     <Switch>
       <Route exact path="/" component={App} />
+      <Route path="/admin" component={Admin} />
       <Route path="/about" component={About} />
       <Route component={NotFound} />
     </Switch>
