@@ -14,3 +14,22 @@ it('should add to the state when an action is provided', () => {
     expect(characteristic({characteristics:[]}, action)).toEqual({characteristics:['bar']});
     expect(characteristic({characteristics:['bass']}, action)).toEqual({characteristics:['bass','bar']});
 });
+
+it('should remove the characteristic from the list when it matches', () => {
+    const action = {
+        type: types.DELETE_CHARACTERISTIC,
+        characteristic: {
+            name: 'foo',
+            description: 'bar'
+        }
+    };
+    const initialState = {
+        characteristics:[
+            {
+                name: 'foo',
+                description: 'bass'
+            }
+        ]
+    };
+    expect(characteristic(initialState, action)).toEqual({characteristics:[]});
+});

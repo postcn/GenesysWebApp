@@ -8,3 +8,8 @@ export const addCharacteristic = (newCharacteristic) => ({
         description: newCharacteristic.characteristicDescription
     }
 });
+
+export const deleteCharacteristic = (deletionCharacteristic) => ({
+    type: types.DELETE_CHARACTERISTIC,
+    characteristic: deletionCharacteristic
+});

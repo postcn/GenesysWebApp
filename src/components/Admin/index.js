@@ -12,8 +12,7 @@ class Admin extends React.Component {
         return (
             <div className="admin-ui">
                 <div>
-                    <h4>Characteristics</h4>
-                    <Creatable creationElement={<CharacteristicCreator/>}>
+                    <Creatable creationElement={<CharacteristicCreator/>} title="Characteristics">
                         <CharacteristicList/>
                     </Creatable>
                 </div>

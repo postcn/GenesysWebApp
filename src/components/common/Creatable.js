@@ -20,9 +20,10 @@ class Creatable extends React.Component {
         let creationContent = this.state.creationVisible ? this.props.creationElement : null;
         return (
             <div>
-                <button className="btn btn-outline-primary" onClick={this.toggleCreationWindow}>{this.state.creationVisible ? '-' : '+'}</button>
+                <button className="btn btn-outline-primary pull-right" onClick={this.toggleCreationWindow}>{this.state.creationVisible ? 'Cancel' : 'Edit'}</button>    
+                <h3>{this.props.title}</h3>
                 {creationContent}
-                {this.props.children}
+                {React.cloneElement(this.props.children, {showDeletion: this.state.creationVisible})}
             </div>
         );
     }

@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import ListItem from '../common/ListItem';
+import { deleteCharacteristic } from '../../actions/characteristicActions';
 
 class CharacteristicList extends React.Component {
 
     constructor(props) {
         super(props);
         this.createCharacteristic = this.createCharacteristic.bind(this);
+        this.deleteCharacteristic = this.deleteCharacteristic.bind(this);
     }
 
     createCharacteristic(characteristic) {
@@ -15,8 +17,14 @@ class CharacteristicList extends React.Component {
             <ListItem key={characteristic.name}
                 headercontents={characteristic.name}
                 bodycontents = {characteristic.description}
+                deletionFunction = {() => this.deleteCharacteristic(characteristic)}
+                showDeletion = {this.props.showDeletion || false}
             />
         );
+    }
+
+    deleteCharacteristic(characteristic) {
+        this.props.deleteCharacteristic(characteristic);
     }
 
     render() {
@@ -35,6 +43,8 @@ function mapStateToProps(state) {
     };
 }
 
-const actionObject = {};
+const actionObject = {
+    deleteCharacteristic
+};
 
 export default connect(mapStateToProps, actionObject)(CharacteristicList);
