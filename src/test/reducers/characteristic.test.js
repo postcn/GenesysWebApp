@@ -33,3 +33,22 @@ it('should remove the characteristic from the list when it matches', () => {
     };
     expect(characteristic(initialState, action)).toEqual({characteristics:[]});
 });
+
+it('should leave the characteristic in the list when it does not match', () => {
+    const action = {
+        type: types.DELETE_CHARACTERISTIC,
+        characteristic: {
+            name: 'foo',
+            description: 'bar'
+        }
+    };
+    const initialState = {
+        characteristics:[
+            {
+                name: 'foolishMortal',
+                description: 'bass'
+            }
+        ]
+    };
+    expect(characteristic(initialState, action)).toEqual(initialState);
+});

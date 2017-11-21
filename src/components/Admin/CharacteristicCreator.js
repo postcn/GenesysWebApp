@@ -15,8 +15,6 @@ class CharacteristicCreator extends React.Component {
     }
 
     handleOnChange(event) {
-        window.lastEvent = event;
-        window.lastEvent.persist();
         this.setState({[event.target.id]: event.target.value})
     }
 

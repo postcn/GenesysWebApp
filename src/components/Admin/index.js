@@ -5,6 +5,8 @@ import {addCharacteristic} from '../../actions/characteristicActions';
 import Creatable from '../common/Creatable';
 import CharacteristicList from './CharacteristicList';
 import CharacteristicCreator from './CharacteristicCreator';
+import SkillList from './SkillList';
+import SkillCreator from './SkillCreator';
 
 class Admin extends React.Component {
 
@@ -14,6 +16,11 @@ class Admin extends React.Component {
                 <div>
                     <Creatable creationElement={<CharacteristicCreator/>} title="Characteristics">
                         <CharacteristicList/>
+                    </Creatable>
+                </div>
+                <div>
+                    <Creatable creationElement={<SkillCreator/>} title="Skills">
+                        <SkillList/>
                     </Creatable>
                 </div>
             </div>
