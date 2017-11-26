@@ -27,6 +27,14 @@ function handleIo(client) {
             otherClient.emi('data', data);
         });
     });
+
+    client.on('disconnect', function (data) {
+        console.log("disconnecting client " + client.id);
+        activeClients = activeClients.filter(testClient => {
+            return testClient.id !== client.id;
+        });
+        console.log("after disconnecting, the client list length is " + activeClients.length);
+    });
 }
 
 module.exports = handleIo;

@@ -5,6 +5,11 @@ class CommunicationManager {
 
     static connect() {
         CommunicationManager.withSocket(socket => {});
+        window.addEventListener('unload', function () {
+            CommunicationManager.withSocket(socket => {
+                socket.emit(MessageTypes.DISCONNECT);
+            });
+        });
     }
 
     static withSocket(caller) {
