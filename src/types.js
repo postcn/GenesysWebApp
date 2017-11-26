@@ -8,3 +8,4 @@ export const ADD_DIE_SYMBOL = "ADD_DIE_SYMBOL";
 export const DELETE_DIE_SYMBOL = "DELETE_DIE_SYMBOL";
 export const ADD_DIE = "ADD_DIE";
 export const DELETE_DIE = "DELETE_DIE";
+export const CHANGE_DIE_SELECTION = "CHANGE_DIE_SELECTION";

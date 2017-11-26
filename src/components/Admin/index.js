@@ -7,6 +7,10 @@ import CharacteristicList from './CharacteristicList';
 import CharacteristicCreator from './CharacteristicCreator';
 import SkillList from './SkillList';
 import SkillCreator from './SkillCreator';
+import DieCreator from './DieCreator';
+import DieList from './DieList';
+import DieSymbolCreator from './DieSymbolCreator';
+import DieSymbolList from './DieSymbolList';
 
 class Admin extends React.Component {
 
@@ -21,6 +25,16 @@ class Admin extends React.Component {
                 <div>
                     <Creatable creationElement={<SkillCreator/>} title="Skills">
                         <SkillList/>
+                    </Creatable>
+                </div>
+                <div>
+                    <Creatable creationElement={<DieSymbolCreator/>} title="Die Symbols">
+                        <DieSymbolList/>
+                    </Creatable>
+                </div>
+                <div>
+                    <Creatable creationElement={<DieCreator/>} title="Dice">
+                        <DieList/>
                     </Creatable>
                 </div>
             </div>

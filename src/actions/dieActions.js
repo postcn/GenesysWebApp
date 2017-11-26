@@ -1,11 +1,8 @@
 import * as types from '../types';
 
-export const addDieSymbol = (name, image) => ({
+export const addDieSymbol = (symbol) => ({
     type: types.ADD_DIE_SYMBOL,
-    symbol: {
-        name: name,
-        imagePath: imagePath
-    }
+    symbol: symbol
 });
 
 export const deleteDieSymbol = (name) => ({
@@ -25,4 +22,12 @@ export const addDie = (name, sides, image) => ({
 export const deleteDie = (name) => ({
     type: types.DELETE_DIE,
     name: name
+});
+
+export const selectDie = (name, count) => ({
+    type: types.CHANGE_DIE_SELECTION,
+    selection: {
+        name: name,
+        count: count
+    }
 });
