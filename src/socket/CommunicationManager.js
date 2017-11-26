@@ -12,24 +12,42 @@ class CommunicationManager {
         });
     }
 
+    static connected() {
+        return CommunicationManager.socket && CommunicationManager.socket.connected;
+    }
+
+    static createNewSocket() {
+        console.log("Creating a new socket");
+        const socket = io();
+        socket.on(MessageTypes.CHAT, function (message) {
+            console.log(message);
+        });
+
+        CommunicationManager.socket = socket;
+    }
+
     static withSocket(caller) {
-        if (CommunicationManager.socket === undefined) {
-            console.log("Creating a new socket");
-            CommunicationManager.socket = io();
-        }
-        console.log("invoking via socket " + CommunicationManager.socket.id);
-        caller.call(this, CommunicationManager.socket);
+        return new Promise((resolve, reject) => {
+            if (CommunicationManager.socket === undefined) {
+                CommunicationManager.createNewSocket();
+            }
+            console.log("invoking via socket " + CommunicationManager.socket.id);
+            caller.call(this, CommunicationManager.socket, ack => {
+                console.log('acked here baby' + ack);
+                resolve(ack)
+            });
+        });
     }
 
     static sendMessage(message) {
-        CommunicationManager.withSocket(socket => {
-            socket.emit(MessageTypes.CHAT, message);
-        })
+        return CommunicationManager.withSocket((socket, ack) => {
+            socket.emit(MessageTypes.CHAT, message, ack);
+        });
     }
 
     static sendData(data) {
-        CommunicationManager.withSocket(socket => {
-            socket.emit(MessageTypes.DATA, data);
+        return CommunicationManager.withSocket((socket, ack) => {
+            socket.emit(MessageTypes.DATA, data, ack);
         });
     }
 }

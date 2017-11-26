@@ -11,21 +11,20 @@ function allClientsExcept(client) {
 
 function handleIo(client) {
     activeClients.push(client);
-    activeClients.forEach(function (value) {
-        console.log("The id of this client is " + value.id);
-    });
 
-    client.on('chat', function (message) {
+    client.on('chat', function (message, ack) {
         console.log("chat message received" + message);
         allClientsExcept(client)(otherClient => {
             otherClient.emit('chat', message);
-        })
+        });
+        ack('submitted');
     });
 
-    client.on('data', function (data) {
+    client.on('data', function (data, ack) {
         allClientsExcept(client)(otherClient => {
             otherClient.emi('data', data);
         });
+        ack('submitted');
     });
 
     client.on('disconnect', function (data) {

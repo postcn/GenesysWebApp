@@ -1,10 +1,11 @@
 import registerServiceWorker from './registerServiceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {routerMiddleware} from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 import Routes from './routes';
 import reducers from './reducers';
@@ -20,7 +21,7 @@ const persistedState = loadState();
 const store = createStore(
   reducers,
   persistedState,
-  composeWithDevTools()
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.subscribe(() => {
