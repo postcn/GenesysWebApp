@@ -1,5 +1,6 @@
 import * as MessageTypes from './MessageTypes';
 import io from 'socket.io-client';
+import shortid from 'shortid';
 
 class CommunicationManager {
 
@@ -40,14 +41,23 @@ class CommunicationManager {
     }
 
     static sendMessage(message) {
+        const decoratedMessage = {
+            type: MessageTypes.CHAT,
+            text: message,
+            id: shortid.generate()
+        };
         return CommunicationManager.withSocket((socket, ack) => {
-            socket.emit(MessageTypes.CHAT, message, ack);
+            socket.emit(MessageTypes.CHAT, decoratedMessage, ack);
         });
     }
 
     static sendData(data) {
+        let decoratedData = data;
+        if (!decoratedData.id) {
+            decoratedData = {...data, id: shortid.generate()};
+        }
         return CommunicationManager.withSocket((socket, ack) => {
-            socket.emit(MessageTypes.DATA, data, ack);
+            socket.emit(MessageTypes.DATA, decoratedData, ack);
         });
     }
 }

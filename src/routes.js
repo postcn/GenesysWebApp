@@ -6,11 +6,13 @@ import About from './components/About';
 import Admin from './components/Admin';
 import NotFound from './components/NotFound';
 import NavBar from './components/NavBar';
+import CommunicationBar from './components/CommunicationBar';
 
 const Routes = (props) => (
   <BrowserRouter {...props}>
   <div className="container-fluid">
     <NavBar/>
+    <CommunicationBar/>
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/admin" component={Admin} />
