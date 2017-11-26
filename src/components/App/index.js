@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import classnames from 'classnames';
 
-import logo from './logo.svg';
+import * as images from '../../images';
 import './style.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className={classnames('App', className)} {...props}>
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={images.DESPAIR} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
