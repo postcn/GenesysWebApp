@@ -5,6 +5,8 @@ import ListItem from '../common/ListItem';
 import DiceSide from '../common/DiceSide';
 import {deleteDie} from '../../actions/dieActions';
 
+import styles from './dieList.css';
+
 class DieList extends React.Component {
     constructor(props) {
         super(props);
@@ -23,8 +25,8 @@ class DieList extends React.Component {
     buildBodyContents(die) {
         return (
             <span>
-                <img src={die.image}/>
-                <ul className="list-inline">
+                <img className="diePreview" src={die.image}/>
+                <ul className="list-inline dieSidesList">
                     {die.sides.map(this.buildSide)}
                 </ul>
             </span>
