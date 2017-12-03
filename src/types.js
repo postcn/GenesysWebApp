@@ -9,3 +9,4 @@ export const DELETE_DIE_SYMBOL = "DELETE_DIE_SYMBOL";
 export const ADD_DIE = "ADD_DIE";
 export const DELETE_DIE = "DELETE_DIE";
 export const CHANGE_DIE_SELECTION = "CHANGE_DIE_SELECTION";
+export const CLEAR_DIE_POOL = "CLEAR_DIE_POOL";

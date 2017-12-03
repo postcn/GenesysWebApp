@@ -2,7 +2,8 @@ import * as types from '../types';
 
 const defaultState = {
     dice: [],
-    symbols: []
+    symbols: [],
+    selectedDice: {}
 };
 
 export default function die(state=defaultState, action) {
@@ -19,6 +20,12 @@ export default function die(state=defaultState, action) {
             return {...state, dice: state.dice.filter(die => {
                 return die.name !== action.name;
             })};
+        case types.CHANGE_DIE_SELECTION:
+            return {...state, selectedDice:
+                {...state.selectedDice, [action.name]: action.count}
+            };
+        case types.CLEAR_DIE_POOL:
+            return {...state, selectedDice:{}};
         default:
             return state;
     }

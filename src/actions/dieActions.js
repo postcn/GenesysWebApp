@@ -24,10 +24,12 @@ export const deleteDie = (name) => ({
     name: name
 });
 
-export const selectDie = (name, count) => ({
+export const setDieCountInPool = (name, count) => ({
     type: types.CHANGE_DIE_SELECTION,
-    selection: {
-        name: name,
-        count: count
-    }
+    name: name,
+    count: count
+});
+
+export const clearDiePool = () => ({
+    type: types.CLEAR_DIE_POOL
 });
