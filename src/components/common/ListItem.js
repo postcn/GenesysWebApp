@@ -19,8 +19,8 @@ class ListItem extends React.Component {
 };
 
 ListItem.propTypes = {
-    headercontents: PropTypes.object.isRequired,
-    bodycontents: PropTypes.object.isRequired,
+    headercontents: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+    bodycontents: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
     showDeletion: PropTypes.bool,
     deletionFunction: PropTypes.func
 };
