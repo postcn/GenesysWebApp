@@ -19,6 +19,7 @@ import upgrade from './upgrade.png';
 import white from './white.png';
 import x from './x.png';
 import yellow from './yellow.png';
+import empty from './empty.png';
 
 export const ADVANTAGE = advantage;
 export const BLACK = black;
@@ -41,3 +42,4 @@ export const UPGRADE = upgrade;
 export const WHITE = white;
 export const X = x;
 export const YELLOW = yellow;
+export const EMPTY = empty;
