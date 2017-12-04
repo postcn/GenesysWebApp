@@ -1,28 +1,19 @@
 let activeClients = [];
 
-function allClientsExcept(client) {
-    let invoker = function (callee) {
-        activeClients.filter(activeClient => {
-            return activeClient.id !== client.id;
-        }).forEach(callee);
-    }
-    return invoker;
-}
-
 function handleIo(client) {
     activeClients.push(client);
 
     client.on('chat', function (message, ack) {
         console.log("chat message received" + message);
-        allClientsExcept(client)(otherClient => {
-            otherClient.emit('chat', message);
+        activeClients.forEach(client => {
+            client.emit('chat', message);
         });
         ack('submitted');
     });
 
     client.on('data', function (data, ack) {
-        allClientsExcept(client)(otherClient => {
-            otherClient.emit('data', data);
+        activeClients.forEach(client => {
+            client.emit('data', data);
         });
         ack('submitted');
     });

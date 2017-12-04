@@ -2,6 +2,9 @@ import * as MessageTypes from './MessageTypes';
 import io from 'socket.io-client';
 import shortid from 'shortid';
 
+import store from '../store';
+import * as messageActions from '../actions/messageActions';
+
 class CommunicationManager {
 
     static connect() {
@@ -22,9 +25,11 @@ class CommunicationManager {
         const socket = io();
         //TODO: implement what happens when we receive one of these messages.
         socket.on(MessageTypes.CHAT, function (message) {
+            store.dispatch(messageActions.sendMessageLocal(message));
             console.log(message);
         });
         socket.on(MessageTypes.DATA, function (data) {
+            store.dispatch(messageActions.sendDataLocal(data));
             console.log(data);
         })
 

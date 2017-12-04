@@ -70,7 +70,7 @@ class ChatMessage extends React.Component {
     render() {
         let message = undefined;
         switch (this.props.message.type) {
-            case 'text':
+            case 'chat':
                 message = this.createText(this.props.message);
                 break;
             case 'roll':
