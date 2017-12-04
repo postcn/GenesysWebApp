@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import ImageCounter from '../../common/ImageCounter';
+import ButtonPanel from './ButtonPanel';
 import {setDieCountInPool} from '../../../actions/dieActions';
 
 class DicePanel extends React.Component {
@@ -23,19 +24,27 @@ class DicePanel extends React.Component {
 
     createDiceCounter(dice) {
         const count = this.findCountFor(dice);
-        return <ImageCounter image={dice.image} value={count} editable
-                decrementFunction={() => this.setDiceCount(dice, count-1)}
-                incrementFunction={() => this.setDiceCount(dice, count+1)}
-                editFunction={(count) => this.setDiceCount(dice, count)}
-            />
+        return (
+            <div className="col-md-4">
+                <ImageCounter image={dice.image} value={count} editable
+                    decrementFunction={() => this.setDiceCount(dice, count-1)}
+                    incrementFunction={() => this.setDiceCount(dice, count+1)}
+                    editFunction={(count) => this.setDiceCount(dice, count)}
+                />
+            </div>
+        );
     }
 
     render() {
         const diceCounters = this.props.dice.map(this.createDiceCounter);
         return (
             <div className="col-md-6">
-                <div className="container">
-                    {diceCounters}
+                <div className="container-fluid">
+                    <div className="row" >
+                        {diceCounters}
+                    </div>
+                    <hr/>
+                    <ButtonPanel/>
                 </div>
             </div>
         )

@@ -17,6 +17,7 @@ class ChatControls extends React.Component {
     onSubmit(evt) {
         evt.preventDefault();
         this.props.sendMessage(this.state.text);
+        this.setState({text: ''});
     }
 
     render() {

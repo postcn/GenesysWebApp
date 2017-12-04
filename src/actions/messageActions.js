@@ -18,3 +18,21 @@ export const sendMessage = (message) => {
         });
     }
 };
+
+const sendDataLocal = (data) => ({
+    type: types.ADD_DATA,
+    data: data
+});
+
+export const sendData = (data) => {
+    return dispatch => {
+        CommunicationManager.sendData(data)
+        .catch(err => {
+            console.error(err);
+        })
+        .then(acked => {
+            console.log('acked');
+            dispatch(sendDataLocal(data));
+        })
+    }
+}

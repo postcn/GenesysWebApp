@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import classnames from 'classnames';
 
 import DiceSymbolGroup from './DiceSymbolGroup';
 
@@ -29,8 +30,12 @@ class DiceSide extends React.Component {
             }
             return <DiceSymbolGroup key={symbol.name} symbol={symbol} count={count}/>;
         });
+        const classes = classnames({
+            diceSide: true,
+            bordered: !this.props.borderless
+        });
         return (
-            <span className="diceSide">
+            <span className={classes}>
                 {symbols}
             </span>
         );

@@ -20,9 +20,13 @@ class CommunicationManager {
     static createNewSocket() {
         console.log("Creating a new socket");
         const socket = io();
+        //TODO: implement what happens when we receive one of these messages.
         socket.on(MessageTypes.CHAT, function (message) {
             console.log(message);
         });
+        socket.on(MessageTypes.DATA, function (data) {
+            console.log(data);
+        })
 
         CommunicationManager.socket = socket;
     }

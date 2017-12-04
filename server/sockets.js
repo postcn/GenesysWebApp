@@ -22,7 +22,7 @@ function handleIo(client) {
 
     client.on('data', function (data, ack) {
         allClientsExcept(client)(otherClient => {
-            otherClient.emi('data', data);
+            otherClient.emit('data', data);
         });
         ack('submitted');
     });
