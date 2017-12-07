@@ -20,13 +20,15 @@ class ButtonPanel extends React.Component {
 
     roll() {
         let dicePool = Object.keys(this.props.selectedDice).reduce(this.addDieToPool, []);
-        this.props.roll(dicePool);
+        if (dicePool.length > 0) {
+            this.props.roll(dicePool);
+        }
     }
 
     render() {
         return (
             <div className="row">
-                <button type="button" class="btn btn-success col-md-1" onClick={() => this.roll()}>Roll</button>
+                <button type="button" className="btn btn-success col-md-1" onClick={() => this.roll()}>Roll</button>
             </div>
         );
     }

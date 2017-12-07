@@ -7,6 +7,7 @@ import Admin from './components/Admin';
 import NotFound from './components/NotFound';
 import NavBar from './components/NavBar';
 import CommunicationBar from './components/CommunicationBar';
+import Export from './components/Export';
 
 const Routes = (props) => (
   <BrowserRouter {...props}>
@@ -17,6 +18,7 @@ const Routes = (props) => (
       <Route exact path="/" component={App} />
       <Route path="/admin" component={Admin} />
       <Route path="/about" component={About} />
+      <Route path="/export" component={Export}/>
       <Route component={NotFound} />
     </Switch>
   </div>

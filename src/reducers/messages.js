@@ -1,7 +1,8 @@
 import * as types from '../types';
 
 const initialState = {
-    messages:[]
+    messages:[],
+    description: "Messages stores any information shared by users across the gameplay. It is not necessary to export this unless you want everyone synchronized on what is happening"
 };
 
 export default function messages(state = initialState, action) {

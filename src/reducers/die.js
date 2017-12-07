@@ -3,7 +3,8 @@ import * as types from '../types';
 const defaultState = {
     dice: [],
     symbols: [],
-    selectedDice: {}
+    selectedDice: {},
+    description: "The Die object contains everything related to how your dice are setup. It should be handled by the GM and should not be edited by any other players. It contains both symbols and dice as well as dice currently in the pool for use."
 };
 
 export default function die(state=defaultState, action) {

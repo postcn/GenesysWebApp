@@ -20,3 +20,18 @@ export const saveState = (state) => {
         console.error(err);
     }
 }
+
+export const mergeState = (state) => {
+    return new Promise((resolve, reject) => {
+        try {
+            let saved = JSON.parse(localStorage.getItem('state'));
+            saved = {...saved, ...state};
+            localStorage.setItem('state', JSON.stringify(saved));
+            console.log(localStorage.getItem('state'));
+            resolve();
+        }
+        catch (err) {
+            reject(err);
+        }
+    });
+}
