@@ -11,3 +11,4 @@ export const ADD_DIE = "ADD_DIE";
 export const DELETE_DIE = "DELETE_DIE";
 export const CHANGE_DIE_SELECTION = "CHANGE_DIE_SELECTION";
 export const CLEAR_DIE_POOL = "CLEAR_DIE_POOL";
+export const SET_DESTINY_POOL = 'SET_DESTINY_POOL';

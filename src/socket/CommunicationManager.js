@@ -4,6 +4,7 @@ import shortid from 'shortid';
 
 import store from '../store';
 import * as messageActions from '../actions/messageActions';
+import { setDestinyPoolLocal } from '../actions/destinyActions';
 
 class CommunicationManager {
 
@@ -29,7 +30,12 @@ class CommunicationManager {
             console.log(message);
         });
         socket.on(MessageTypes.DATA, function (data) {
-            store.dispatch(messageActions.sendDataLocal(data));
+            if (data.type === 'destiny') {
+                store.dispatch(setDestinyPoolLocal(data.destinyPool));
+            }
+            else {
+                store.dispatch(messageActions.sendDataLocal(data));
+            }
             console.log(data);
         })
 
