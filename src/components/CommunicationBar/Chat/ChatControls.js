@@ -23,10 +23,10 @@ class ChatControls extends React.Component {
     render() {
         return (
             <div className="form-group">
-                <div className="input-group">
+                <form className="input-group" onSubmit={this.onSubmit}>
                     <input type="text" className="form-control" placeholder="Your message here" value={this.state.text} onChange={this.onChange}/>
-                    <span className="input-group-addon btn btn-default" onClick={this.onSubmit}><span className="glyphicon glyphicon-triangle-right"/></span>
-                </div>
+                    <button type='submit' className="input-group-addon btn btn-default" onClick={this.onSubmit}><span className="glyphicon glyphicon-triangle-right"/></button>
+                </form>
             </div>
         );
     }

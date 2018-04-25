@@ -25,10 +25,6 @@ class CommunicationManager {
         console.log("Creating a new socket");
         const socket = io();
         //TODO: implement what happens when we receive one of these messages.
-        socket.on(MessageTypes.CHAT, function (message) {
-            store.dispatch(messageActions.sendMessageLocal(message));
-            console.log(message);
-        });
         socket.on(MessageTypes.DATA, function (data) {
             if (data.type === 'destiny') {
                 store.dispatch(setDestinyPoolLocal(data.destinyPool));

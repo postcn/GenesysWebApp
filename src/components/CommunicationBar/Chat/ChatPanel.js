@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {sendMessage} from '../../../actions/messageActions';
+import {sendData} from '../../../actions/messageActions';
 import CommunicationManager from '../../../socket/CommunicationManager';
 
 import ChatMessage from './ChatMessage';
@@ -29,7 +29,10 @@ class ChatPanel extends React.Component {
                 <ul className="chatMessages list-group">
                     {messages}
                 </ul>
-                <ChatControls sendMessage={message => {this.props.sendMessage(message)}}/>
+                <ChatControls sendMessage={message => {this.props.sendData({
+                    type: 'chat',
+                    text: message
+                })}}/>
             </div>
         );
     }
@@ -42,7 +45,7 @@ function mapStateToProps(state) {
 }
 
 const functionObject = {
-    sendMessage
+    sendData
 };
 
 export default connect(mapStateToProps, functionObject)(ChatPanel);
