@@ -6,6 +6,7 @@ import skill from './reducers/skill';
 import messages from './reducers/messages';
 import die from './reducers/die';
 import destiny from './reducers/destiny';
+import user from './reducers/user';
 
 export default combineReducers({
     character,
@@ -13,5 +14,6 @@ export default combineReducers({
     die,
     messages,
     skill,
-    destiny
+    destiny,
+    user
 });
